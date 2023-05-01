@@ -1,0 +1,32 @@
+boolean var_continua = true;
+        String username = "simo";
+        String password = "9876";
+        String doc = "E:\\Programmazione\\Lezioni\\utenti.txt";
+        
+        try {
+            BufferedReader file = new BufferedReader(new FileReader(doc));
+
+            String riga = file.readLine(); // 
+            
+            while (riga != null && var_continua == true) {   
+            //while (riga != null) {   
+                
+                
+                    String var_riga_array[] = riga.split(";");
+                    //System.out.println("Riga " + riga);
+                
+                    if (var_riga_array[0].equals(username)&&var_riga_array[1].equals(password)){
+                        var_continua = false;
+                        System.out.println("Accesso consentito");
+                        
+                    }else{
+                        System.out.println("Accesso negato");
+                    }
+                
+                riga = file.readLine();
+            }
+
+            file.close();
+        } catch (IOException e) {
+            System.out.println(e);
+        }
